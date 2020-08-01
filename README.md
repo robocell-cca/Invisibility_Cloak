@@ -1,4 +1,4 @@
-# Invisibilty_Cloak
+# Invisibility_Cloak
 Clone of Invisibility Cloak from the fictional universe of Harry Potter
 
 ## Requirements
