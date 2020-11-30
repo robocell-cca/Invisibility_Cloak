@@ -81,8 +81,24 @@ while (capture_video.isOpened()):
     res1 = cv2.bitwise_and(background, background, mask = mask1) 
     res2 = cv2.bitwise_and(img, img, mask = mask2) 
     final_output = cv2.addWeighted(res1, 1, res2, 1, 0) 
+    
+    #define the screen resulation
+    screen_res = 1920, 1080
+    scale_width = screen_res[0] / img.shape[1]
+    scale_height = screen_res[1] / img.shape[0]
+    scale = min(scale_width, scale_height)
+    
+    #resized window width and height
+    window_width = int(img.shape[1] * scale)
+    window_height = int(img.shape[0] * scale)
+    
+    #cv2.WINDOW_NORMAL makes the output window resizealbe
+    cv2.namedWindow('Resized Window', cv2.WINDOW_NORMAL)
+    
+    #resize the window according to the screen resolution
+    cv2.resizeWindow('Resized Window', window_width, window_height)
   
-    cv2.imshow("INVISIBLE MAN", final_output) 
+    cv2.imshow("Resized Window", final_output) 
     k = cv2.waitKey(10) 
     if k == 27: 
         break
